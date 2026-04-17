@@ -20,10 +20,11 @@ export function buildApiUrl(
   base = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? DEFAULT_PUBLIC_API_BASE_URL,
 ): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const apiPath = `/api${normalizedPath}`;
   if (!base) {
-    return `/api${normalizedPath}`;
+    return apiPath;
   }
-  return `${base.replace(/\/$/, "")}${normalizedPath}`;
+  return `${base.replace(/\/$/, "")}${apiPath}`;
 }
 
 export async function fetchOptions(): Promise<FaultApiOptions> {

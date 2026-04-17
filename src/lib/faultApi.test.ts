@@ -7,6 +7,6 @@ describe("buildApiUrl", () => {
   });
 
   it("uses configured API base URL when present", () => {
-    expect(buildApiUrl("/fault-record", "https://api.example.com")).toBe("https://api.example.com/fault-record");
+    expect(buildApiUrl("/fault-record", "https://api.example.com")).toBe("https://api.example.com/api/fault-record");
   });
 });
