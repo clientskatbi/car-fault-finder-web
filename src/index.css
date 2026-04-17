@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* Hermes Agent — Design tokens                                        */
-/* Matched to hermes-agent.nousresearch.com (dark teal theme)          */
+/* Car Fault Finder — Design tokens                                    */
+/* Clean product UI, no Hermes branding                                */
 /* ------------------------------------------------------------------ */
 
 /* --- Font faces --- */
@@ -17,42 +17,42 @@
 @font-face { font-family: "Mondwest"; src: url("/fonts/Mondwest-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 
 @theme {
-  /* ---- Hermes palette (dark teal, from live site) ---- */
-  --color-background: #041C1C;
-  --color-foreground: #ffe6cb;
-  --color-card: #062424;
-  --color-card-foreground: #ffe6cb;
-  --color-primary: #ffe6cb;
-  --color-primary-foreground: #041C1C;
-  --color-secondary: #0a2e2e;
-  --color-secondary-foreground: #ffe6cb;
-  --color-muted: #083030;
-  --color-muted-foreground: #8aaa9a;
-  --color-accent: #0c3838;
-  --color-accent-foreground: #ffe6cb;
-  --color-destructive: #fb2c36;
-  --color-destructive-foreground: #fff;
-  --color-success: #4ade80;
-  --color-warning: #ffbd38;
-  --color-border: color-mix(in srgb, #ffe6cb 15%, transparent);
-  --color-input: color-mix(in srgb, #ffe6cb 15%, transparent);
-  --color-ring: #ffe6cb;
-  --color-popover: #062424;
-  --color-popover-foreground: #ffe6cb;
+  /* ---- Product palette ---- */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-card: #ffffff;
+  --color-card-foreground: #171717;
+  --color-primary: #111827;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f8fafc;
+  --color-secondary-foreground: #171717;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #52525b;
+  --color-accent: #eff6ff;
+  --color-accent-foreground: #1d4ed8;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-border: rgba(23, 23, 23, 0.08);
+  --color-input: rgba(23, 23, 23, 0.12);
+  --color-ring: #2563eb;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #171717;
 
   /* ---- Font stacks ---- */
-  --font-sans: "Mondwest", Arial, sans-serif;
-  --font-mono: "Courier Prime", "Courier New", monospace;
-  --font-display: "Mondwest", Arial, sans-serif;
-  --font-expanded: "RulesExpanded", Arial, sans-serif;
-  --font-compressed: "RulesCompressed", Arial, sans-serif;
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-display: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-expanded: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-compressed: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* ---- Global body ---- */
 body {
   margin: 0;
-  font-family: "Mondwest", Arial, sans-serif;
-  background: var(--color-background);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -142,12 +142,12 @@ code {
 }
 
 /* ---- Font utilities ---- */
-.font-display { font-family: "Mondwest", Arial, sans-serif; }
-.font-expanded { font-family: "RulesExpanded", Arial, sans-serif; }
-.font-compressed { font-family: "RulesCompressed", Arial, sans-serif; }
-.font-courier { font-family: "Courier Prime", "Courier New", monospace; }
-.font-collapse { font-family: "Collapse", Arial, sans-serif; }
-.font-mono-ui { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace; }
+.font-display { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.font-expanded { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.font-compressed { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.font-courier { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+.font-collapse { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.font-mono-ui { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
 
 /* ---- Subtle grain overlay for badges ---- */
 .grain {

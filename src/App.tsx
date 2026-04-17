@@ -1,115 +1,87 @@
-import { useState } from "react";
-import { Activity, BarChart3, CarFront, Clock, FileText, KeyRound, MessageSquare, Package, Settings } from "lucide-react";
-import StatusPage from "@/pages/StatusPage";
-import ConfigPage from "@/pages/ConfigPage";
-import EnvPage from "@/pages/EnvPage";
-import SessionsPage from "@/pages/SessionsPage";
-import LogsPage from "@/pages/LogsPage";
-import AnalyticsPage from "@/pages/AnalyticsPage";
-import CronPage from "@/pages/CronPage";
-import SkillsPage from "@/pages/SkillsPage";
+import { CarFront, Search, Wrench } from "lucide-react";
 import FaultCodePage from "@/pages/FaultCodePage";
-
-const NAV_ITEMS = [
-  { id: "status", label: "Status", icon: Activity },
-  { id: "faults", label: "Fault Finder", icon: CarFront },
-  { id: "sessions", label: "Sessions", icon: MessageSquare },
-  { id: "analytics", label: "Analytics", icon: BarChart3 },
-  { id: "logs", label: "Logs", icon: FileText },
-  { id: "cron", label: "Cron", icon: Clock },
-  { id: "skills", label: "Skills", icon: Package },
-  { id: "config", label: "Config", icon: Settings },
-  { id: "env", label: "Keys", icon: KeyRound },
-] as const;
-
-type PageId = (typeof NAV_ITEMS)[number]["id"];
-
-const PAGE_COMPONENTS: Record<PageId, React.FC> = {
-  status: StatusPage,
-  faults: FaultCodePage,
-  sessions: SessionsPage,
-  analytics: AnalyticsPage,
-  logs: LogsPage,
-  cron: CronPage,
-  skills: SkillsPage,
-  config: ConfigPage,
-  env: EnvPage,
-};
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function App() {
-  const [page, setPage] = useState<PageId>("status");
-
-  const PageComponent = PAGE_COMPONENTS[page];
-
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      {/* Global grain + warm glow (matches landing page) */}
-      <div className="noise-overlay" />
-      <div className="warm-glow" />
-
-      {/* ---- Header with grid-border nav ---- */}
-      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm">
-        <div className="mx-auto flex h-12 max-w-[1400px] items-stretch">
-          {/* Brand */}
-          <div className="flex items-center border-r border-border px-5 shrink-0">
-            <span className="font-collapse text-xl font-bold tracking-wider uppercase blend-lighter">
-              Hermes<br className="hidden sm:inline" /><span className="sm:hidden"> </span>Agent
-            </span>
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="border-b border-border bg-background/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card shadow-sm">
+              <CarFront className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="text-lg font-semibold tracking-tight">Car Fault Finder</div>
+              <div className="text-sm text-muted-foreground">Visual fault-code lookup for premium vehicles</div>
+            </div>
           </div>
 
-          {/* Nav grid — Mondwest labels like the landing page nav */}
-          <nav className="flex items-stretch overflow-x-auto scrollbar-none">
-            {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => setPage(id)}
-                className={`group relative inline-flex items-center gap-1.5 border-r border-border px-4 py-2 font-display text-[0.8rem] tracking-[0.12em] uppercase whitespace-nowrap transition-colors cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
-                  page === id
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Icon className="h-3.5 w-3.5" />
-                {label}
-                {/* Hover highlight */}
-                <span className="absolute inset-0 bg-foreground pointer-events-none transition-opacity duration-150 group-hover:opacity-5 opacity-0" />
-                {/* Active indicator — dither bar */}
-                {page === id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground" />
-                )}
-              </button>
-            ))}
-          </nav>
-
-          {/* Version badge */}
-          <div className="ml-auto flex items-center px-4 text-muted-foreground">
-            <span className="font-display text-[0.7rem] tracking-[0.15em] uppercase opacity-50">
-              Web UI
-            </span>
+          <div className="hidden items-center gap-2 md:flex">
+            <Badge variant="outline">Web MVP</Badge>
+            <Button variant="outline" size="sm" onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}>
+              Start lookup
+            </Button>
           </div>
         </div>
       </header>
 
-      <main
-        key={page}
-        className="relative z-2 mx-auto w-full max-w-[1400px] flex-1 px-6 py-8"
-        style={{ animation: "fade-in 150ms ease-out" }}
-      >
-        <PageComponent />
+      <main>
+        <section className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.15fr_0.85fr] md:py-20">
+          <div className="grid gap-6">
+            <Badge variant="outline" className="w-fit">Porsche demo • fault code to part location</Badge>
+            <div className="grid gap-4">
+              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+                Enter a fault code and instantly see the likely part and where it sits in the car.
+              </h1>
+              <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
+                Built for workshops, diagnostics specialists, and premium-car technicians. The current MVP starts with Porsche and shows a practical example for code P029900.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <FeaturePill icon={Search} text="Fast fault lookup" />
+              <FeaturePill icon={CarFront} text="Vehicle-aware selection" />
+              <FeaturePill icon={Wrench} text="Part image + location map" />
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-[0_0_0_1px_rgba(0,0,0,0.02),0_18px_60px_-24px_rgba(15,23,42,0.25)]">
+            <div className="grid gap-3">
+              <div className="text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">How it works</div>
+              <ol className="grid gap-4 text-sm leading-7 text-muted-foreground">
+                <li><span className="font-medium text-foreground">1.</span> Select brand, model, and engine.</li>
+                <li><span className="font-medium text-foreground">2.</span> Enter the DTC / fault code exactly as read by the diagnostic tool.</li>
+                <li><span className="font-medium text-foreground">3.</span> Get the likely part, location image, common causes, and first inspection steps.</li>
+              </ol>
+              <div className="rounded-2xl border border-border bg-background px-4 py-3 text-sm text-muted-foreground">
+                Next milestone: admin panel + Supabase knowledge base + support for more brands and codes.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-24">
+          <FaultCodePage />
+        </section>
       </main>
 
-      {/* ---- Footer ---- */}
-      <footer className="relative z-2 border-t border-border">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3">
-          <span className="font-display text-[0.8rem] tracking-[0.12em] uppercase opacity-50">
-            Hermes Agent
-          </span>
-          <span className="font-display text-[0.7rem] tracking-[0.15em] uppercase text-foreground/40">
-            Nous Research
-          </span>
+      <footer className="border-t border-border bg-background">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <span>Car Fault Finder MVP</span>
+          <span>Porsche demo dataset • visual diagnostics workflow</span>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function FeaturePill({ icon: Icon, text }: { icon: typeof Search; text: string }) {
+  return (
+    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground shadow-sm">
+      <Icon className="h-4 w-4 text-foreground" />
+      <span>{text}</span>
     </div>
   );
 }
