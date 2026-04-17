@@ -1,0 +1,33 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" fill="#09090B"/>
+  <rect x="48" y="48" width="1104" height="604" rx="28" fill="#18181B" stroke="#3F3F46" stroke-width="2"/>
+  <text x="86" y="110" fill="#FAFAFA" font-size="42" font-family="Arial, sans-serif" font-weight="700">Cayenne 4.0T engine bay location</text>
+  <text x="86" y="150" fill="#A1A1AA" font-size="24" font-family="Arial, sans-serif">Approximate location map for turbo / boost path</text>
+
+  <rect x="193" y="198" width="807" height="335" rx="56" fill="#27272A" stroke="#71717A" stroke-width="10"/>
+  <rect x="289" y="240" width="620" height="250" rx="34" fill="#3F3F46"/>
+  <rect x="420" y="263" width="356" height="200" rx="28" fill="#52525B"/>
+  <rect x="527" y="286" width="144" height="158" rx="22" fill="#71717A"/>
+  <circle cx="357" cy="362" r="68" fill="#52525B"/>
+  <circle cx="843" cy="362" r="68" fill="#52525B"/>
+  <path d="M330 362 C370 306 431 280 513 273" stroke="#A1A1AA" stroke-width="18" stroke-linecap="round"/>
+  <path d="M687 273 C769 280 830 306 870 362" stroke="#A1A1AA" stroke-width="18" stroke-linecap="round"/>
+
+  <ellipse cx="870" cy="405" rx="92" ry="72" fill="#7C2D12" stroke="#FB923C" stroke-width="10"/>
+  <ellipse cx="338" cy="405" rx="92" ry="72" fill="#172554" stroke="#60A5FA" stroke-width="10"/>
+  <text x="289" y="414" fill="#DBEAFE" font-size="28" font-family="Arial, sans-serif" font-weight="700">Left turbo zone</text>
+  <text x="808" y="414" fill="#FFEDD5" font-size="28" font-family="Arial, sans-serif" font-weight="700">Right turbo zone</text>
+
+  <line x1="870" y1="330" x2="1050" y2="196" stroke="#FB923C" stroke-width="6" stroke-dasharray="12 12"/>
+  <rect x="912" y="122" width="222" height="88" rx="14" fill="#431407" stroke="#FB923C" stroke-width="2"/>
+  <text x="938" y="158" fill="#FFEDD5" font-size="24" font-family="Arial, sans-serif" font-weight="700">Likely inspection area</text>
+  <text x="938" y="190" fill="#FED7AA" font-size="20" font-family="Arial, sans-serif">Turbo + actuator + hoses</text>
+
+  <line x1="338" y1="334" x2="140" y2="194" stroke="#60A5FA" stroke-width="6" stroke-dasharray="12 12"/>
+  <rect x="74" y="120" width="233" height="88" rx="14" fill="#172554" stroke="#60A5FA" stroke-width="2"/>
+  <text x="100" y="156" fill="#DBEAFE" font-size="24" font-family="Arial, sans-serif" font-weight="700">Mirror-side zone</text>
+  <text x="100" y="188" fill="#BFDBFE" font-size="20" font-family="Arial, sans-serif">Other bank / charge path</text>
+
+  <rect x="426" y="546" width="349" height="60" rx="14" fill="#111827" stroke="#94A3B8" stroke-width="2"/>
+  <text x="462" y="584" fill="#E2E8F0" font-size="24" font-family="Arial, sans-serif">Actual access differs by trim and workshop procedure</text>
+</svg>
