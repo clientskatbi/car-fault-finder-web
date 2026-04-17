@@ -13,7 +13,12 @@ export interface FaultLookupInput {
   faultCode: string;
 }
 
-export function buildApiUrl(path: string, base = import.meta.env.VITE_API_BASE_URL as string | undefined): string {
+const DEFAULT_PUBLIC_API_BASE_URL = "https://annual-tears-sample-admission.trycloudflare.com";
+
+export function buildApiUrl(
+  path: string,
+  base = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? DEFAULT_PUBLIC_API_BASE_URL,
+): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   if (!base) {
     return `/api${normalizedPath}`;
